@@ -1,37 +1,60 @@
 "use client";
 
-import { useState } from "react";
+import {useMemo, useState} from "react";
 
 const CHECK_STRING = ['컴퓨터', '사전', '프로그래밍'];
+const DELEMETER = "%구분%"
+const CHECK_STRING_REGEX_STR = "(" + CHECK_STRING.join('|') + ")" ;
+const CHECK_STRING_REGEX = new RegExp(CHECK_STRING_REGEX_STR, 'g');
 
 export default function Page() {
   const [text, setText] = useState('')
 
-  const checkString = "(" + CHECK_STRING.join('|') + ")" ;
-  const checkStringRegex = new RegExp(checkString, 'g');
-  const isCheckStringIncluded = checkStringRegex.test(text);
-  const processedText = text.replaceAll(checkStringRegex, (match) => {
-      return "[" + match + "]";
-  })
+    const splitArr = useMemo(() => {
+        const processedText = text.replaceAll(CHECK_STRING_REGEX, (match) => {
+            return DELEMETER + match + DELEMETER;
+        })
+        return processedText.split(DELEMETER);
+    }, [text])
 
   return (
-      <div>
+      <div style={{
+          width: '80vw',
+          margin: '0 auto',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '20px'
+      }}>
+          <img src={"/image.png"} alt={"image"} style={{
+              width: '500px',
+          }}/>
           <textarea
               onChange={(e) => {
                   setText(e.target.value);
               }}
               style={{
                   width: '500px',
-                  height: '300px'
+                  height: '300px',
+                  resize: 'none'
               }}
           />
           <div
               style={{
                   width: '500px',
-                  height: '300px'
+                  height: '300px',
+                  overflow: 'auto',
               }}>
-              {JSON.stringify(isCheckStringIncluded)}
-              {processedText}
+              {
+                  splitArr.map((item, index) => {
+                      if(item.match(CHECK_STRING_REGEX)){
+                          return (<span key={index} style={{
+                              backgroundColor: 'yellow'
+                          }}>{item}</span>)
+                      }
+                        return (<span key={index}>{item}</span>)
+                  })
+              }
           </div>
       </div>
   )
