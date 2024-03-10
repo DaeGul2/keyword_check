@@ -1,7 +1,7 @@
 "use client";
 
 import {useMemo, useState} from "react";
-import keyword from '../../keyword_check_fork/public/keyword.json'
+import keyword from '@/public/keyword.json'
 
 const CHECK_STRING = keyword;
 const DELEMETER = "%구분%"
