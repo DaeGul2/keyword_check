@@ -28,7 +28,7 @@ export default function Page() {
             gap: '20px'
         }}>
             <img src={"/image.png"} alt={"image"} style={{
-                width: '1100px',
+                width: '700px',
                 height: '300px',
                 objectFit: 'contain',
             }}/>
