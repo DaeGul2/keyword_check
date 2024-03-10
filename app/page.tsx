@@ -39,7 +39,9 @@ export default function Page() {
                 style={{
                     width: '80%',
                     height: '300px',
-                    resize: 'none'
+                    resize: 'none',
+                    border: '1px solid black',
+                    borderRadius: '5px'
                 }}
             />
             <div
