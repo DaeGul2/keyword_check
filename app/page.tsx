@@ -28,11 +28,10 @@ export default function Page() {
             gap: '20px'
         }}>
             <img src={"/image.png"} alt={"image"} style={{
-                width: '700px',
-                height: '300px',
-                objectFit: 'scale-down',
+                width: '80%',
             }}/>
             <textarea
+                autoFocus
                 onChange={(e) => {
                     setText(e.target.value);
                 }}
