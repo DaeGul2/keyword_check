@@ -30,7 +30,7 @@ export default function Page() {
             <img src={"/image.png"} alt={"image"} style={{
                 width: '700px',
                 height: '300px',
-                objectFit: 'contain',
+                objectFit: 'scale-down',
             }}/>
             <textarea
                 onChange={(e) => {
