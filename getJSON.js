@@ -6,5 +6,6 @@ fs.readFile("public/origin.txt", "utf8", (err, origin) => {
         return;
     }
     const arr = origin.split("\n");
-    fs.writeFileSync("public/keyword.json", JSON.stringify(arr));
+    const filteredArr = arr.filter(item => item);
+    fs.writeFileSync("public/keyword.json", JSON.stringify(filteredArr));
 });
