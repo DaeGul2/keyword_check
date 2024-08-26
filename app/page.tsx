@@ -32,6 +32,7 @@ export default function Page() {
             <img src={"/image.png"} alt={"image"} style={{
                 width: '80%',
             }}/>
+            by isbr
             <textarea
                 autoFocus
                 onChange={(e) => {
